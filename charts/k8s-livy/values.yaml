@@ -1,0 +1,17 @@
+Livy:
+  Enabled: true
+  Name: spark-livy
+  Image: "mcr.microsoft.com/mmlspark/livy"
+  ImageTag: "v4"
+  Replicas: 1
+  Component: "livy"
+  Cpu: "1000m"
+  Memory: "1024Mi"
+  ServicePort: 8080
+  ContainerPort: 8998
+  ServiceType: LoadBalancer
+  InternalELB: false
+  Autoscaling:
+    Enabled: true
+  ReplicasMax: 5
+  CpuTargetPercentage: 50

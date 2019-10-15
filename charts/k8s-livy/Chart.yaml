@@ -1,0 +1,9 @@
+name: livy
+version: 0.0.1
+appVersion: 2.4.0
+description: A REST Service for Apache Spark
+home: https://livy.apache.org/
+icon: https://livy.apache.org/assets/themes/apache/img/logo.png
+maintainers:
+  - name: Satyajit Roy
+    email: satyajit@adobe.com
