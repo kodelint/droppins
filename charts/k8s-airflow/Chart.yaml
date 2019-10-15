@@ -1,5 +1,5 @@
 name: k8s-airflow
-version: 0.0.1
+version: 0.0.2
 appVersion: 1.10.4
 description: Workflow Manager.
 home: https://airflow.apache.org/
