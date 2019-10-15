@@ -1,0 +1,9 @@
+name: k8s-airflow
+version: 0.0.1
+appVersion: 1.10.4
+description: Workflow Manager.
+home: https://airflow.apache.org/
+icon: https://airflow.apache.org/_images/pin_large.png
+maintainers:
+  - name: Satyajit Roy
+    email: satyajit@adobe.com

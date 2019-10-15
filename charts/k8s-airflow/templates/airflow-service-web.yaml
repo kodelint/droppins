@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "airflow.fullname" . }}-web
+  labels:
+    app: {{ template "airflow.name" . }}
+    component: web
+    chart: {{ template "airflow.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+  annotations:
+    # service.beta.kubernetes.io/aws-load-balancer-security-groups: "sg-081e69cebab98fe45"
+  {{- if .Values.airflow.InternalELB }}
+    service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
+  {{end}}
+spec:
+  type: {{ .Values.airflow.service.type }}
+  loadBalancerSourceRanges:
+    - 192.150.10.200/29
+    - 192.150.10.208/29
+  selector:
+    app: {{ template "airflow.name" . }}
+    component: web
+    release: {{ .Release.Name }}
+  ports:
+    - name: web
+      protocol: TCP
+      port: 8080
