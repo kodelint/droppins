@@ -199,7 +199,8 @@ airflow:
     ## docker-airflow image
 
     # repository: dock4sroy/k8s-aws-airflow1.10.4  # AWS
-    repository: docker.io/dock4sroy/k8s-airflow-v1.10.4-with-spark2.4.4-hadoop-3.2.0-python-3.6.8  # AWS
+    # repository: docker.io/dock4sroy/k8s-airflow-v1.10.4-with-spark2.4.4-hadoop-3.2.0-python-3.6.8  # AWS
+    repository: dock4sroy/airflow1.10.4
     ##
     ## image tag
     # tag: v2.1 # Original Image works fine
