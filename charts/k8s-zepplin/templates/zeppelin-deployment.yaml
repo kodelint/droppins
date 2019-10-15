@@ -60,24 +60,24 @@ spec:
               memory: "{{ .Values.Zeppelin.Memory }}"
           env:
             - name: SPARK_MASTER
-              value: "spark://{{ template "master-fullname" . }}:{{ .Values.Master.ServicePort }}"
+              value: "spark://{{ template "zeppelin-fullname" . }}:{{ .Values.Master.ServicePort }}"
           volumeMounts:
           {{- if .Values.Zeppelin.Persistence.Config.Enabled }}
-            - name: {{ template "master-fullname" . }}-config
+            - name: {{ template "zeppelin-fullname" . }}-config
               mountPath: /zeppelin/conf
           {{- end }}
           {{- if .Values.Zeppelin.Persistence.Notebook.Enabled }}
-            - name: {{ template "master-fullname" . }}-notebook
+            - name: {{ template "zeppelin-fullname" . }}-notebook
               mountPath: /zeppelin/notebook
           {{- end }}
       volumes:
         {{- if .Values.Zeppelin.Persistence.Config.Enabled }}
-        - name: {{ template "master-fullname" . }}-config
+        - name: {{ template "zeppelin-fullname" . }}-config
           persistentVolumeClaim:
             claimName: {{ template "zeppelin-fullname" . }}-config
         {{- end }}
         {{- if .Values.Zeppelin.Persistence.Notebook.Enabled }}
-        - name: {{ template "master-fullname" . }}-notebook
+        - name: {{ template "zeppelin-fullname" . }}-notebook
           persistentVolumeClaim:
             claimName: {{ template "zeppelin-fullname" . }}-notebook
         {{- end }}
