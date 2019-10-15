@@ -1,0 +1,8 @@
+name: sparklets
+version: 0.0.1
+description: Fast and general-purpose pipeline for workflow management.
+home: https://github.com/kodelint/sparklets.git
+icon: https://png.pngtree.com/png-vector/20190302/ourlarge/pngtree-fire-flame-icon-design-template-vector-isolated-png-image_719970.jpg
+maintainers:
+  - name: Satyajit Roy
+    email: satyajit@adobe.com

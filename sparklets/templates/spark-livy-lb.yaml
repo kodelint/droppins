@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "livy-fullname" . }}
+  labels:
+    heritage: {{ .Release.Service | quote }}
+    release: {{ .Release.Name | quote }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    component: "{{ .Release.Name }}-{{ .Values.Livy.Component }}"
+  annotations:
+  {{- if .Values.Livy.InternalELB }}
+    service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0
+  {{end}}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.Livy.ServicePort }}
+      targetPort: {{ .Values.Livy.ContainerPort }}
+  selector:
+    component: "{{ .Release.Name }}-{{ .Values.Livy.Component }}"
+  type: {{ .Values.Livy.ServiceType }}
+  loadBalancerSourceRanges:
+    - 192.150.10.200/29
+    - 192.150.10.208/29

@@ -1,0 +1,23 @@
+{{- if .Values.workers.autoscaling.enabled }}
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    heritage: {{ .Release.Service | quote }}
+    release: {{ .Release.Name | quote }}
+    chart: {{ template "airflow.chart" . }}
+    component: {{ .Release.Name }}
+  name: {{ template "airflow.fullname" . }}-worker
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1beta1
+    kind: Deployment
+    name: {{ template "airflow.fullname" . }}-worker
+  minReplicas: {{ .Values.workers.replicas }}
+  maxReplicas: {{ .Values.workers.replicasMax }}
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: {{ .Values.workers.CpuTargetPercentage }}
+{{- end }}
