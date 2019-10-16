@@ -199,12 +199,12 @@ airflow:
     ## docker-airflow image
 
     # repository: dock4sroy/k8s-aws-airflow1.10.4  # AWS
-    # repository: docker.io/dock4sroy/k8s-airflow-v1.10.4-with-spark2.4.4-hadoop-3.2.0-python-3.6.8  # AWS
-    repository: dock4sroy/airflow1.10.4
+    repository: docker.io/dock4sroy/sparklets-airflow-1.10.4  # AWS
+    # repository: dock4sroy/airflow1.10.4
     ##
     ## image tag
     # tag: v2.1 # Original Image works fine
-    tag: v0.1  # Using this for `spark-submit` command
+    tag: v0.0.1  # Using this for `spark-submit` command
     ##
     ## Image pull policy
     ## values: Always or IfNotPresent
@@ -271,7 +271,7 @@ airflow:
     - id: k8s_cluster
       type: spark
       host: k8s://https://rkek8s.dev.adobesearch.io/k8s/clusters/c-tpclr
-      extra: '{"queue": "root.default", "deploy-mode": "cluster", "spark-home" : "/usr/spark-2.4.4", "spark-binary": "spark-submit", "namespace": "random"}'
+      extra: '{"queue": "root.default", "deploy-mode": "cluster", "spark-home" : "/usr/spark-2.4.4", "spark-binary": "spark-submit", "namespace": "workflows"}'
   ## Add airflow variables
   ## This should be a json string with your variables in it
   ## Examples:
