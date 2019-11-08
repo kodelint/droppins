@@ -270,7 +270,7 @@ airflow:
   connections:
     - id: k8s_cluster
       type: spark
-      host: k8s://https://rke23k8s.dev.adobesearch.io/k8s/clusters/c-ml27d
+      host: k8s://https://rkek8s.dev.adobesearch.io/k8s/clusters/c-ml27d
       extra: '{"queue": "root.default", "deploy-mode": "cluster", "spark-home" : "/usr/spark-2.4.4", "spark-binary": "spark-submit", "namespace": "workflows"}'
   ## Add airflow variables
   ## This should be a json string with your variables in it
